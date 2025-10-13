@@ -107,3 +107,23 @@ def delete(user_id):
     db.session.commit()
     flash(f"Usuário '{user.nome}' excluído com sucesso!", "success")
     return redirect(url_for("users.index"))
+
+
+@users_bp.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    # Dados básicos do perfil para evitar erros no template
+    profile_data = {
+        'cargo': '',
+        'instituicao': '',
+        'telefone': '',
+        'bio': '',
+        'foto': None,
+        'foto_thumb': None
+    }
+    
+    if request.method == 'POST':
+        # Aqui você implementaria a lógica de salvamento do perfil
+        pass
+    
+    return render_template('users/profile.html', profile=profile_data, form=None)
