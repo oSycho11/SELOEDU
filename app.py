@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 from extensions import db, login_manager
 from models.user import User
-from views.auth import auth_bp
-from views.users import users_bp
+from routes.auth import auth_bp
+from routes.users import users_bp
 
 
 app = Flask(__name__)

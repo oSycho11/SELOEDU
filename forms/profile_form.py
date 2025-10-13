@@ -1,7 +1,7 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField
-from wtforms.validators import Optional, Length
-from flask_wtf.file import FileField, FileAllowed
+from flask_wtf import FlaskForm # type: ignore
+from wtforms import StringField, TextAreaField, SubmitField # type: ignore
+from wtforms.validators import Optional, Length # type: ignore
+from flask_wtf.file import FileField, FileAllowed # type: ignore
 
 class ProfileForm(FlaskForm):
     telefone    = StringField("Telefone", validators=[Optional(), Length(max=11)])

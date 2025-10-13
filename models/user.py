@@ -10,6 +10,8 @@ class User(db.Model, UserMixin):
     role = db.Column(db.String(20), nullable=False, default="aluno")
     ativo = db.Column(db.Boolean, default=True)
 
+    profile = db.relationship('Profile', uselist=False, back_populates='user')
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
