@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>{% block title %}SELOEDU{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='custom.css') }}"
+    />
+  </head>
+  <body>
     <div class="layout">
-        <aside>
-            <h2>SELOEDU</h2>
+      <aside>
+        <h2>SELOEDU</h2>
 
-            {% if current_user.is_authenticated %}
-            <nav>
-                <ul>
-                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ url_for('users.index') }}">Usuários</a></li>
-                </ul>
-            </nav>
+        {% if current_user.is_authenticated %}
+        <nav>
+          <ul>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('users.index') }}">Usuários</a></li>
+            <li><a href="{{ url_for('treinamento.listar') }}">Treinamentos</a></li>
+          </ul>
+        </nav>
 
-            <div class="sidebar-footer">
-                <ul>
-                    <li><a href="{{ url_for('users.profile') }}">Perfil</a></li>
-                    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">Sair</a></li>
-                </ul>
-            </div>
-            {% endif %}
-        </aside>
+        <div class="sidebar-footer">
+          <ul>
+            <li><a href="{{ url_for('users.profile') }}">Perfil</a></li>
+            <li><a href="{{ url_for('auth.reset_password', token=token) }}">Atualizar Senha</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Sair</a></li>
+          </ul>
+        </div>
+        {% endif %}
+      </aside>
 
-        <!-- CONTEÚDO PRINCIPAL -->
-        <main>
-            {% block messages %}{% endblock %}
-            {% block content %}{% endblock %}
-        </main>
+      <!-- CONTEÚDO PRINCIPAL -->
+      <main>
+        {% block messages %}{% endblock %} {% block content %}{% endblock %}
+      </main>
     </div>
 
     <footer>
-        <p>SELOEDU © 2025</p>
+      <p>SELOEDU © 2025</p>
     </footer>
-</body>
+  </body>
 </html>
